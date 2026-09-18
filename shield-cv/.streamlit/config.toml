@@ -1,0 +1,21 @@
+# Streamlit configuration for SHIELD-CV.
+# Binding to 0.0.0.0 and disabling CORS/XSRF is required for the dashboard to
+# be reachable through a reverse proxy or container port mapping. On an
+# air-gapped host the server is only reachable on the local network anyway.
+[server]
+address = "0.0.0.0"
+port = 8501
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "dark"
+primaryColor = "#1f6feb"
+backgroundColor = "#0b0f14"
+secondaryBackgroundColor = "#111822"
+textColor = "#d7e0ea"

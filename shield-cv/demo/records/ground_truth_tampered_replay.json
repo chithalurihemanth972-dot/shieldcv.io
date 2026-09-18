@@ -1,0 +1,27 @@
+{
+  "attack": "INFERENCE_TAMPER",
+  "parameters": {
+    "mode": "replay",
+    "count": 2,
+    "seed": 1337
+  },
+  "tampered_records": [
+    {
+      "index": 30,
+      "record_id": "REC-000015",
+      "mode": "replay",
+      "replayed_from_index": 15,
+      "expected_detection": "duplicate nonce and duplicate record id"
+    },
+    {
+      "index": 31,
+      "record_id": "REC-000025",
+      "mode": "replay",
+      "replayed_from_index": 25,
+      "expected_detection": "duplicate nonce and duplicate record id"
+    }
+  ],
+  "errors": [],
+  "num_tampered": 2,
+  "output": "demo/records/tampered_replay.json"
+}

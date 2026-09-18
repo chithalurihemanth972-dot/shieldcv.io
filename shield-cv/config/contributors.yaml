@@ -1,0 +1,98 @@
+# =============================================================================
+# SHIELD-CV contributor registry
+# =============================================================================
+# Declares the known data/model contributors feeding the pipeline, so findings
+# can be attributed to an accountable organisation rather than to an anonymous
+# folder name.
+#
+# IMPORTANT — how trust is used:
+# `trust_level` is an ADMINISTRATIVE prior, not a detection input. It NEVER
+# suppresses or amplifies a detection: the scanners are deliberately blind to
+# it, because a compromised trusted vendor is precisely the threat this
+# framework exists to catch. It is used only for (a) reporting context and
+# (b) escalation routing — a CRITICAL finding against a TRUSTED contributor is
+# escalated harder, not softer, since it implies supply-chain compromise.
+#
+# Folder auto-discovery: any directory under a dataset root whose name matches
+# `folder` (or the contributor key) is attributed to that contributor.
+# Unmatched folders are reported as `_unattributed` rather than silently
+# assigned, so gaps in accountability stay visible.
+# =============================================================================
+
+registry_version: "1.0.0"
+default_trust_level: "UNVERIFIED"
+
+# Escalation multipliers applied to REPORTING priority only (never to detector
+# confidence). A finding against a nominally trusted source is more serious,
+# not less, because it implies the vetting process itself has failed.
+escalation_policy:
+  TRUSTED: 1.25
+  VERIFIED: 1.10
+  UNVERIFIED: 1.00
+  PROBATION: 1.15
+  SUSPENDED: 1.50
+
+contributors:
+  contributor_alpha:
+    display_name: "Northern Command ISR Detachment"
+    folder: "contributor_alpha"
+    organisation: "Indian Army — Northern Command"
+    type: "internal_unit"
+    trust_level: "TRUSTED"
+    clearance: "RESTRICTED"
+    contact: "isr-det-north@army.internal"
+    onboarded: "2024-03-11"
+    data_domains: ["aerial_eo", "ground_eo"]
+    notes: >-
+      Organic collection asset. Imagery is captured on service-owned sensors
+      with an unbroken custody record.
+
+  contributor_bravo:
+    display_name: "DRDO Vision Systems Laboratory"
+    folder: "contributor_bravo"
+    organisation: "Defence Research and Development Organisation"
+    type: "research_partner"
+    trust_level: "VERIFIED"
+    clearance: "RESTRICTED"
+    contact: "vsl-datasets@drdo.internal"
+    onboarded: "2024-06-02"
+    data_domains: ["aerial_eo", "synthetic"]
+    notes: >-
+      Supplies both real and synthetically augmented imagery. Synthetic content
+      is expected here, so near-duplicate density is assessed against a higher
+      baseline during review — but is still measured and reported.
+
+  contributor_charlie:
+    display_name: "External Imaging Vendor (Tender 2024/CV/117)"
+    folder: "contributor_charlie"
+    organisation: "Commercial supplier"
+    type: "external_vendor"
+    trust_level: "UNVERIFIED"
+    clearance: "UNCLASSIFIED"
+    contact: "delivery@vendor.example"
+    onboarded: "2025-01-20"
+    data_domains: ["aerial_eo"]
+    notes: >-
+      Lowest-assurance source: no custody guarantees and no insight into the
+      collection pipeline. Highest-priority candidate for full manual review
+      when any finding is raised.
+
+# Model vendors are tracked separately from data contributors because a
+# compromised model and a compromised dataset demand different responses.
+model_vendors:
+  vendor_primary:
+    display_name: "DRDO Vision Systems Laboratory"
+    trust_level: "VERIFIED"
+    accredited_models: []
+    notes: >-
+      Register accredited weight hashes here. Once a SHA-256 is listed, any
+      deployed model whose hash differs is reported as MODEL_SUBSTITUTION.
+
+  vendor_secondary:
+    display_name: "External Model Supplier"
+    trust_level: "UNVERIFIED"
+    accredited_models: []
+    notes: >-
+      No accredited baseline on file. Substitution detection is NOT AVAILABLE
+      for this vendor until a reference hash is registered — the report states
+      this rather than implying the model was checked.

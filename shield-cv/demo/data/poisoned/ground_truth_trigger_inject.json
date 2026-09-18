@@ -1,0 +1,195 @@
+{
+  "attack": "TRIGGER_INJECTION",
+  "parameters": {
+    "count": 18,
+    "target_class": 1,
+    "patch_size": 8,
+    "position": "bottom-right",
+    "pattern": "solid",
+    "seed": 1337
+  },
+  "poisoned_files": [
+    {
+      "file": "alpha_armoured_vehicle_015.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_armoured_vehicle_015.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "alpha_personnel_000.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_personnel_000.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "alpha_personnel_014.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_personnel_014.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "alpha_personnel_017.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_personnel_017.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "alpha_personnel_021.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_personnel_021.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "alpha_supply_truck_014.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_supply_truck_014.jpg",
+      "original_labels": [
+        1
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "alpha_supply_truck_015.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_supply_truck_015.jpg",
+      "original_labels": [
+        1
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "bravo_armoured_vehicle_001.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_armoured_vehicle_001.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "bravo_armoured_vehicle_011.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_armoured_vehicle_011.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "bravo_personnel_001.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_personnel_001.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "bravo_personnel_013.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_personnel_013.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "bravo_personnel_018.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_personnel_018.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "charlie_armoured_vehicle_005.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_armoured_vehicle_005.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "charlie_personnel_013.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_personnel_013.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "charlie_personnel_019.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_personnel_019.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "charlie_personnel_027.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_personnel_027.jpg",
+      "original_labels": [
+        2
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "charlie_supply_truck_006.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_supply_truck_006.jpg",
+      "original_labels": [
+        1
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    },
+    {
+      "file": "charlie_supply_truck_016.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_supply_truck_016.jpg",
+      "original_labels": [
+        1
+      ],
+      "new_label": 1,
+      "trigger_position": "bottom-right",
+      "patch_size": 8
+    }
+  ],
+  "errors": [],
+  "num_poisoned": 18
+}

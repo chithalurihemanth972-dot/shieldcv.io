@@ -1,0 +1,163 @@
+# =============================================================================
+# SHIELD-CV detection thresholds — operator-tunable overlay
+# =============================================================================
+# This file is layered OVER settings.yaml at load time (deep merge, this file
+# wins). Its purpose is to let an accreditation authority retune detection
+# sensitivity for a specific theatre WITHOUT editing the main configuration or
+# touching code.
+#
+# Every value below was measured, not guessed. The "validated" note records the
+# evidence that set it. Changing a threshold changes the precision/recall
+# trade-off in the direction noted — raise to reduce false positives at the cost
+# of misses, lower to catch more at the cost of analyst workload.
+#
+# Empty sections inherit settings.yaml unchanged.
+# =============================================================================
+
+meta:
+  profile: "baseline"
+  description: >-
+    Default balanced profile. Calibrated against the bundled demo corpus
+    (270 clean / 284 poisoned aerial images, 4-class synthetic model).
+  calibrated_on: "demo/data/poisoned + demo/data/drift"
+
+# ---------------------------------------------------------------------------
+# Module 1 — Data integrity
+# ---------------------------------------------------------------------------
+data_scanner:
+  trigger:
+    # Validated: clean p99 block_max_zscore reached ~14,600 while poisoned
+    # median sat at 28 — ABSOLUTE spatial thresholds are unusable because
+    # per-image statistics self-normalise. Every spatial score is therefore
+    # converted to a dataset-relative modified Z before comparison.
+    fft_high_freq_ratio_threshold: 0.32
+    fft_zscore_threshold: 2.5
+    block_size: 16
+    block_variance_zscore: 4.0
+    min_blocks_flagged: 1
+    # Modified Z (MAD-based) on the SVD projection. 2.0 is the Neural-Cleanse
+    # convention and held up: tighter produced duplicate-cluster false hits.
+    spectral_zscore_threshold: 2.0
+    spectral_min_class_size: 12
+
+  label_flip:
+    knn_k: 10
+    # Validated: centroid distance is the WRONG primary signal — a flipped
+    # label usually lands INSIDE the wrong class's cloud, so its centroid
+    # distance is unremarkable. Sweeping this multiplier never exceeded 6/10
+    # recall. KNN neighbourhood disagreement is the correct primary signal:
+    # flipped samples showed median agreement 0.10 vs 0.90 for clean.
+    centroid_std_multiplier: 2.0
+    min_class_size: 8
+    knn_disagreement_threshold: 0.60
+    knn_majority_threshold: 0.50
+
+  near_duplicate:
+    # pHash Hamming < 5. Validated on the clean corpus: only 55 of 36,315
+    # pairs fall below 5 (p1 = 14, median = 32), so the boundary is wide.
+    hash_size: 8
+    hamming_threshold: 5
+    flood_cluster_min_size: 4
+    contributor_duplicate_rate: 0.20
+
+  ood:
+    mahalanobis_percentile: 99.0
+    energy_zscore: 2.5
+    min_reference_samples: 30
+
+  mislabel:
+    confidence_threshold: 0.55
+    min_margin: 0.10
+
+  contributor_risk:
+    # risk = 0.60*noisy-OR(severity-weighted confidence)
+    #      + 0.25*min(2*density, 1) + 0.15*min((n_types-1)/4, 1)
+    escalation_threshold: 0.60
+
+# ---------------------------------------------------------------------------
+# Module 2 — Model integrity
+# ---------------------------------------------------------------------------
+model_auditor:
+  weight_stats:
+    std_median_multiplier: 3.0
+    kurtosis_threshold: 12.0
+    sparsity_threshold: 0.90
+
+  neural_cleanse:
+    epochs: 400
+    lr: 0.1
+    # Validated by sweep: 0.01 leaves every class mask around 21 (no
+    # separation); 0.40 collapses all masks to zero. 0.05 isolated the true
+    # backdoored target class and left the clean twin unflagged.
+    l1_lambda: 0.05
+    input_size: 32
+    max_classes: 10
+    # MAD anomaly index. NOTE: this test is mathematically underpowered below
+    # ~8 classes — with 4 classes the maximum attainable index is ~0.81, so it
+    # can never reach 2.0. The engine detects this, warns explicitly, and
+    # applies the size-ratio rule below as a declared secondary heuristic.
+    mad_threshold: 2.0
+    size_ratio_threshold: 0.34
+    max_trigger_coverage: 0.06
+    attack_success_target: 0.90
+    early_stop_patience: 30
+
+  activation_clustering:
+    n_clusters: 2
+    imbalance_threshold: 0.70
+    min_samples_per_class: 10
+    pca_components: 10
+
+  blackbox:
+    canonical_samples: 100
+    mismatch_rate_threshold: 0.05
+    entropy_sharp_threshold: 0.15
+    entropy_flat_threshold: 0.90
+
+# ---------------------------------------------------------------------------
+# Module 4 — Distribution shift
+# ---------------------------------------------------------------------------
+drift_detector:
+  zscore_threshold: 2.0
+  mmd_threshold: 0.05
+  centroid_threshold: 0.15
+  variance_ratio_low: 0.60
+  variance_ratio_high: 1.70
+  min_samples: 10
+  # Validated: Z alone is unsafe. Colour warmth produced Z = 169 for a 23%
+  # change because the baseline spread was near zero. A property must clear
+  # BOTH statistical significance AND this practical magnitude to count.
+  material_relative_change: 0.15
+  # Bimodality separation for identifying INJECTED content. Calibrated against
+  # homogeneous baselines, which reach ~3.0 by chance from distribution tails;
+  # 5.0 leaves clear headroom. Distance-from-baseline was rejected as a signal
+  # because it saturates at 1.0 whenever the whole population shifts.
+  bimodality_separation: 5.0
+  bimodality_minority_fraction: 0.08
+
+# ---------------------------------------------------------------------------
+# Cross-cutting scoring
+# ---------------------------------------------------------------------------
+scoring:
+  severity:
+    critical: 0.85
+    high: 0.65
+    medium: 0.40
+  disposition:
+    quarantine: 0.80
+    review: 0.50
+  # Bonus applied when independent detection methods agree. Kept modest so
+  # consensus strengthens a case without manufacturing certainty.
+  consensus_bonus: 0.12
+
+immunity:
+  # Adversarial Immunity Score component weights (must sum to 1.0).
+  weights:
+    data_integrity: 0.30
+    model_integrity: 0.30
+    provenance: 0.25
+    drift_stability: 0.15
+  bands:
+    hardened: 85
+    adequate: 70
+    marginal: 50

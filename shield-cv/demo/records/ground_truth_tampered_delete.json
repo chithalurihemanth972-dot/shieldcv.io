@@ -1,0 +1,25 @@
+{
+  "attack": "INFERENCE_TAMPER",
+  "parameters": {
+    "mode": "delete",
+    "count": 2,
+    "seed": 1337
+  },
+  "tampered_records": [
+    {
+      "index": 25,
+      "record_id": "REC-000025",
+      "mode": "delete",
+      "expected_detection": "broken chain link and sequence gap"
+    },
+    {
+      "index": 15,
+      "record_id": "REC-000015",
+      "mode": "delete",
+      "expected_detection": "broken chain link and sequence gap"
+    }
+  ],
+  "errors": [],
+  "num_tampered": 2,
+  "output": "demo/records/tampered_delete.json"
+}

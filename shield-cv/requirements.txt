@@ -1,0 +1,43 @@
+# SHIELD-CV — Secure Holistic Integrity Evaluation Layer for Defence Computer Vision
+# 100% offline. Install once on a connected staging host, then transfer the wheel
+# cache to the air-gapped machine:  pip download -r requirements.txt -d wheels/
+#                                  pip install --no-index --find-links wheels/ -r requirements.txt
+#
+# Python 3.10+ required.
+
+# ---- Core numerics -------------------------------------------------------
+numpy>=1.24,<3.0
+scipy>=1.10
+
+# ---- Deep learning (CPU build is sufficient; CUDA optional) --------------
+torch>=2.0
+torchvision>=0.15
+
+# ---- Model runtime for ONNX white-box / black-box inference --------------
+onnxruntime>=1.16
+onnx>=1.14
+
+# ---- Classical ML --------------------------------------------------------
+scikit-learn>=1.3
+
+# ---- Imaging -------------------------------------------------------------
+opencv-python>=4.8        # use opencv-python-headless on servers without X11
+Pillow>=10.0
+imagehash>=4.3
+
+# ---- Cryptography --------------------------------------------------------
+cryptography>=41.0        # Ed25519 keygen / sign / verify
+
+# ---- Interface -----------------------------------------------------------
+streamlit>=1.30           # dashboard (GUI)
+rich>=13.0                # coloured CLI output
+
+# ---- Config / schema / IO ------------------------------------------------
+PyYAML>=6.0
+jsonschema>=4.19
+# NOTE: no HTTP client is listed. The only network call in the codebase is the
+# optional local Ollama briefing, which uses urllib from the standard library.
+# There is no egress path to the internet.
+
+# Streamlit renders tables natively, so matplotlib/pandas are NOT required.
+# They are deliberately excluded to keep the air-gapped wheel bundle small.

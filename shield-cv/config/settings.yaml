@@ -1,0 +1,250 @@
+# =============================================================================
+# SHIELD-CV master configuration
+# All thresholds, paths and runtime knobs live here. No hardcoded paths in code.
+# Override at runtime with:  shield --config /path/to/other.yaml <command>
+# =============================================================================
+
+project:
+  name: SHIELD-CV
+  full_name: Secure Holistic Integrity Evaluation Layer for Defence Computer Vision
+  version: "1.0.0"
+  classification: "RESTRICTED // DEMO"
+  offline_mode: true          # hard-blocks any non-loopback network call
+
+paths:
+  root: "."                   # resolved relative to the config file's parent
+  database: "shield.db"
+  output: "output"
+  reports: "output/reports"
+  audit_logs: "output/audit_logs"
+  keys: "output/keys"
+  cache: "output/cache"
+  demo: "demo"
+
+runtime:
+  device: "cpu"               # "cpu" | "cuda" | "auto"
+  batch_size: 32
+  num_workers: 0              # 0 = main process (safest for 8GB laptops)
+  max_images: 5000            # hard cap per scan to bound memory
+  image_size: 224
+  seed: 1337
+  torch_threads: 4
+
+logging:
+  level: "INFO"               # DEBUG | INFO | WARNING | ERROR
+  file: "output/audit_logs/shield.log"
+  rich_console: true
+  max_bytes: 5242880
+  backup_count: 3
+
+# ---------------------------------------------------------------------------
+# Feature extraction — FROZEN ResNet-18, never retrained
+# ---------------------------------------------------------------------------
+embeddings:
+  backbone: "resnet18"
+  weights: "IMAGENET1K_V1"
+  layer: "avgpool"            # 512-d penultimate features
+  normalize: true
+  # Air-gap guard. When false (the default and the accredited posture) the
+  # backbone is loaded ONLY from local_weights_path and never from the network.
+  allow_network_fetch: false
+  local_weights_path: "demo/models/resnet18_imagenet1k_v1.pth"  # air-gap fallback
+  allow_random_init_fallback: true   # degrade loudly rather than crash offline
+
+# ---------------------------------------------------------------------------
+# Module 1 — Data integrity thresholds
+# ---------------------------------------------------------------------------
+data_scanner:
+  enabled_detectors:
+    - trigger_injection
+    - label_flipping
+    - near_duplicate
+    - out_of_distribution
+    - systematic_mislabeling
+
+  trigger:
+    fft_high_freq_ratio_threshold: 0.32   # high-band energy / total energy
+    fft_zscore_threshold: 2.5
+    block_size: 16
+    block_variance_zscore: 4.0
+    min_blocks_flagged: 1
+    spectral_zscore_threshold: 2.0        # modified Z-score on SVD projection
+    spectral_min_class_size: 12
+
+  label_flip:
+    knn_k: 10
+    centroid_std_multiplier: 2.0
+    min_class_size: 8
+    knn_disagreement_threshold: 0.60   # >=60% of neighbours must disagree
+    knn_majority_threshold: 0.50       # competing class must hold >=50% of them
+
+  duplicate:
+    phash_size: 8
+    hamming_threshold: 5
+    flood_cluster_min_size: 4        # absolute floor for the flood threshold
+    use_ssim: true                   # confirm pHash links on real pixels
+    ssim_threshold: null             # null = calibrate against this dataset
+    adaptive_flood: true             # derive flood size from the corpus itself
+    flood_mad_multiplier: 3.0
+    contributor_flood_share: 0.20    # >20% duplicated material flags a source             # cluster >= N => "flooding"
+
+  ood:
+    mahalanobis_percentile: 99.0
+    energy_temperature: 1.0
+    energy_zscore_threshold: 2.5
+    shrinkage: 0.1                        # covariance regularisation
+
+  mislabel:
+    confident_learning_margin: 0.15
+    min_confidence_gap: 0.30
+
+  severity_map:
+    critical: 0.85
+    high: 0.65
+    medium: 0.40
+  disposition_map:
+    quarantine: 0.80
+    review: 0.50
+
+# ---------------------------------------------------------------------------
+# Module 2 — Model integrity
+# ---------------------------------------------------------------------------
+drift_detector:
+  # Pixel-property shift threshold (modified Z against the baseline spread).
+  zscore_threshold: 2.0
+  # Feature-level thresholds over L2-normalised ResNet-18 embeddings.
+  mmd_threshold: 0.05
+  centroid_threshold: 0.15
+  # Embedding variance ratio bounds. Below low = unnaturally homogeneous data
+  # (duplication / synthesis); above high = injected heterogeneous content.
+  variance_ratio_low: 0.60
+  variance_ratio_high: 1.70
+  min_samples: 10
+
+model_auditor:
+  weight_stats:
+    std_median_multiplier: 3.0
+    kurtosis_threshold: 12.0
+    sparsity_threshold: 0.90
+  neural_cleanse:
+    enabled: true
+    epochs: 400
+    lr: 0.1
+    # Validated on the demo backdoor: 0.01 leaves masks too large to separate
+    # classes; 0.4 collapses every mask. 0.05 isolates the true target class.
+    l1_lambda: 0.05
+    input_size: 32
+    max_classes: 10            # cap for laptop runtime
+    mad_threshold: 2.0
+    # Secondary rule used only when the MAD index is underpowered (<8 classes).
+    size_ratio_threshold: 0.34
+    max_trigger_coverage: 0.06
+    attack_success_target: 0.90
+    early_stop_patience: 30
+  activation_clustering:
+    enabled: true
+    n_clusters: 2
+    imbalance_threshold: 0.70
+    min_samples_per_class: 10
+    pca_components: 10
+  blackbox:
+    canonical_samples: 100
+    mismatch_rate_threshold: 0.05
+    entropy_sharp_threshold: 0.15
+    entropy_flat_threshold: 0.90
+
+# ---------------------------------------------------------------------------
+# Module 3 — Inference provenance / crypto chain
+# ---------------------------------------------------------------------------
+provenance:
+  hash_algorithm: "sha256"
+  signature_algorithm: "ed25519"
+  nonce_bits: 256
+  private_key_file: "output/keys/shield_ed25519.key"
+  public_key_file: "output/keys/shield_ed25519.pub"
+  merkle_batch_size: 256
+  allow_clock_skew_ns: 1000000000     # 1s tolerated backwards skew
+
+# ---------------------------------------------------------------------------
+# Module 4 — Distribution shift
+# ---------------------------------------------------------------------------
+drift:
+  pixel_zscore_threshold: 2.0
+  properties:
+    - brightness
+    - contrast
+    - color_warmth
+    - edge_density
+    - sharpness
+  canny_low: 100
+  canny_high: 200
+  mmd_kernel: "rbf"
+  mmd_gamma: null               # null => median heuristic
+  mmd_threshold: 0.05
+  centroid_drift_threshold: 0.35
+  variance_ratio_threshold: 1.75
+  natural_drift_min_properties: 3
+  suspicious_single_property_z: 4.0
+  max_sample: 400
+
+# ---------------------------------------------------------------------------
+# Module 5 — Intelligence layer
+# ---------------------------------------------------------------------------
+intelligence:
+  threat_story:
+    correlation_window_hours: 72
+    min_correlation_confidence: 0.50
+  briefing:
+    ollama_url: "http://localhost:11434"
+    model: "llama3.2:3b"
+    fallback_model: "phi3:mini"
+    timeout_seconds: 45
+    temperature: 0.2
+    max_tokens: 700
+    disclaimer: "AI-generated. Verify with analyst."
+  immunity:
+    weights:
+      trigger_resistance: 0.25
+      label_flip_resistance: 0.15
+      adversarial_robustness: 0.20
+      distribution_tolerance: 0.15
+      backdoor_immunity: 0.25
+
+# ---------------------------------------------------------------------------
+# Multi-agent office
+# ---------------------------------------------------------------------------
+agents:
+  max_workers: 4
+  worker_memory_mb: 700            # per-agent RSS budget (torch + backbone)               # one core per contributor agent
+  per_agent_timeout_s: 1800
+  contributor_dir_patterns:
+    - "contributor_*"
+    - "source_*"
+    - "vendor_*"
+  disparity_zscore: 1.5
+  model_disagreement_threshold: 0.20
+
+reporting:
+  schema_version: "1.0.0"
+  include_evidence: true
+  pretty_print: true
+  coverage:
+    supported:
+      - TRIGGER_INJECTION
+      - LABEL_FLIPPING
+      - NEAR_DUPLICATE_FLOODING
+      - OUT_OF_DISTRIBUTION
+      - SYSTEMATIC_MISLABELING
+      - MODEL_BACKDOOR
+      - MODEL_SUBSTITUTION
+      - WEIGHT_ANOMALY
+      - INFERENCE_TAMPER
+      - INFERENCE_REPLAY
+      - CHAIN_BREAK
+      - DISTRIBUTION_SHIFT
+    unsupported:
+      - "Runtime/hardware supply-chain implants (firmware, TEE)"
+      - "Encrypted-model black-box weight recovery"
+      - "Adaptive adversaries with full knowledge of SHIELD-CV thresholds"
+      - "Semantic/clean-label poisoning without embedding-space signature"
+      - "Attacks requiring model retraining to confirm"

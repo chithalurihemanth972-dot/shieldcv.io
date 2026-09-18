@@ -1,0 +1,61 @@
+{
+  "attack": "INFERENCE_TAMPER",
+  "parameters": {
+    "mode": "edit",
+    "count": 2,
+    "seed": 1337
+  },
+  "tampered_records": [
+    {
+      "index": 15,
+      "record_id": "REC-000015",
+      "mode": "edit",
+      "original_class": "supply_truck",
+      "new_class": "civilian_vehicle",
+      "original_output": {
+        "detections": [
+          {
+            "class": "supply_truck",
+            "confidence": 0.7354,
+            "bbox": [
+              51,
+              9,
+              46,
+              20
+            ]
+          }
+        ],
+        "frame": 15
+      },
+      "hashes_repaired": false,
+      "expected_detection": "hash mismatch"
+    },
+    {
+      "index": 25,
+      "record_id": "REC-000025",
+      "mode": "edit",
+      "original_class": "personnel",
+      "new_class": "civilian_vehicle",
+      "original_output": {
+        "detections": [
+          {
+            "class": "personnel",
+            "confidence": 0.6283,
+            "bbox": [
+              55,
+              72,
+              31,
+              33
+            ]
+          }
+        ],
+        "frame": 25
+      },
+      "hashes_repaired": false,
+      "expected_detection": "hash mismatch"
+    }
+  ],
+  "errors": [],
+  "num_tampered": 2,
+  "output": "/home/user/shield-cv/demo/records/validate_edit.json"
+}

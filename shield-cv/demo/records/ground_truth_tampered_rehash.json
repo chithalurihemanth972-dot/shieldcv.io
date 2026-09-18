@@ -1,0 +1,61 @@
+{
+  "attack": "INFERENCE_TAMPER",
+  "parameters": {
+    "mode": "rehash",
+    "count": 2,
+    "seed": 1337
+  },
+  "tampered_records": [
+    {
+      "index": 15,
+      "record_id": "REC-000015",
+      "mode": "rehash",
+      "original_class": "supply_truck",
+      "new_class": "civilian_vehicle",
+      "original_output": {
+        "detections": [
+          {
+            "class": "supply_truck",
+            "confidence": 0.7354,
+            "bbox": [
+              51,
+              9,
+              46,
+              20
+            ]
+          }
+        ],
+        "frame": 15
+      },
+      "hashes_repaired": true,
+      "expected_detection": "signature verification failure"
+    },
+    {
+      "index": 25,
+      "record_id": "REC-000025",
+      "mode": "rehash",
+      "original_class": "personnel",
+      "new_class": "civilian_vehicle",
+      "original_output": {
+        "detections": [
+          {
+            "class": "personnel",
+            "confidence": 0.6283,
+            "bbox": [
+              55,
+              72,
+              31,
+              33
+            ]
+          }
+        ],
+        "frame": 25
+      },
+      "hashes_repaired": true,
+      "expected_detection": "signature verification failure"
+    }
+  ],
+  "errors": [],
+  "num_tampered": 2,
+  "output": "demo/records/tampered_rehash.json"
+}

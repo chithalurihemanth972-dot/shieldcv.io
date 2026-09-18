@@ -1,0 +1,52 @@
+{
+  "scenarios": {
+    "dusk": {
+      "path": "demo/data/drift/dusk",
+      "images": 270,
+      "expected_shift_type": "NATURAL_OPERATIONAL_DRIFT",
+      "modified_count": 0,
+      "modified_sample": []
+    },
+    "monsoon": {
+      "path": "demo/data/drift/monsoon",
+      "images": 270,
+      "expected_shift_type": "NATURAL_OPERATIONAL_DRIFT",
+      "modified_count": 0,
+      "modified_sample": []
+    },
+    "sensor": {
+      "path": "demo/data/drift/sensor",
+      "images": 270,
+      "expected_shift_type": "NATURAL_OPERATIONAL_DRIFT",
+      "modified_count": 0,
+      "modified_sample": []
+    },
+    "injected": {
+      "path": "demo/data/drift/injected",
+      "images": 270,
+      "expected_shift_type": "SUSPICIOUS_MANIPULATION",
+      "modified_count": 59,
+      "modified_sample": [
+        "alpha_armoured_vehicle_001.jpg",
+        "alpha_armoured_vehicle_007.jpg",
+        "alpha_armoured_vehicle_009.jpg",
+        "alpha_armoured_vehicle_013.jpg",
+        "alpha_armoured_vehicle_014.jpg"
+      ]
+    },
+    "duplicated": {
+      "path": "demo/data/drift/duplicated",
+      "images": 270,
+      "expected_shift_type": "SUSPICIOUS_MANIPULATION",
+      "modified_count": 270,
+      "modified_sample": [
+        "alpha_armoured_vehicle_000.jpg",
+        "alpha_armoured_vehicle_001.jpg",
+        "alpha_armoured_vehicle_002.jpg",
+        "alpha_armoured_vehicle_003.jpg",
+        "alpha_armoured_vehicle_004.jpg"
+      ]
+    }
+  },
+  "errors": []
+}

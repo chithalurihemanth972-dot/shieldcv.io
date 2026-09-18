@@ -1,0 +1,114 @@
+{
+  "attack": "LABEL_FLIPPING",
+  "parameters": {
+    "rate": 0.12,
+    "mode": "targeted",
+    "source_class": 0,
+    "target_class": 2,
+    "seed": 7
+  },
+  "flipped_files": [
+    {
+      "file": "alpha_armoured_vehicle_004.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_armoured_vehicle_004.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "alpha_armoured_vehicle_019.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_armoured_vehicle_019.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "alpha_armoured_vehicle_026.jpg",
+      "path": "demo/data/poisoned/contributor_alpha/images/alpha_armoured_vehicle_026.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "bravo_armoured_vehicle_019.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_armoured_vehicle_019.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "bravo_armoured_vehicle_021.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_armoured_vehicle_021.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "bravo_armoured_vehicle_027.jpg",
+      "path": "demo/data/poisoned/contributor_bravo/images/bravo_armoured_vehicle_027.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "charlie_armoured_vehicle_007.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_armoured_vehicle_007.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "charlie_armoured_vehicle_013.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_armoured_vehicle_013.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "charlie_armoured_vehicle_015.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_armoured_vehicle_015.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    },
+    {
+      "file": "charlie_armoured_vehicle_016.jpg",
+      "path": "demo/data/poisoned/contributor_charlie/images/charlie_armoured_vehicle_016.jpg",
+      "original_labels": [
+        0
+      ],
+      "new_label": 2,
+      "original_class_name": "armoured_vehicle",
+      "new_class_name": "personnel"
+    }
+  ],
+  "errors": [],
+  "num_flipped": 10
+}

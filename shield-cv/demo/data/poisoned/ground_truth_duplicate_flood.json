@@ -1,0 +1,152 @@
+{
+  "attack": "NEAR_DUPLICATE_FLOODING",
+  "parameters": {
+    "sources": 2,
+    "copies": 7,
+    "strength": 1.0,
+    "seed": 11
+  },
+  "clusters": [
+    {
+      "source_file": "alpha_personnel_004.jpg",
+      "label": 2,
+      "duplicates": [
+        {
+          "file": "alpha_personnel_004_dup000.jpg",
+          "ops": [
+            "brightness+1.6",
+            "contrast x0.972",
+            "noise \u03c3=0.72",
+            "rotate+0.44\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_004_dup001.jpg",
+          "ops": [
+            "brightness-7.2",
+            "contrast x0.983",
+            "noise \u03c3=0.54",
+            "rotate-0.24\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_004_dup002.jpg",
+          "ops": [
+            "brightness-2.4",
+            "contrast x1.019",
+            "noise \u03c3=1.33",
+            "rotate+0.54\u00b0",
+            "blur3x3"
+          ]
+        },
+        {
+          "file": "alpha_personnel_004_dup003.jpg",
+          "ops": [
+            "brightness+0.9",
+            "contrast x1.011",
+            "noise \u03c3=1.39",
+            "rotate-0.89\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_004_dup004.jpg",
+          "ops": [
+            "brightness+5.2",
+            "noise \u03c3=1.60",
+            "rotate+0.63\u00b0",
+            "blur3x3"
+          ]
+        },
+        {
+          "file": "alpha_personnel_004_dup005.jpg",
+          "ops": [
+            "brightness+3.2",
+            "contrast x1.007",
+            "noise \u03c3=0.67",
+            "rotate-0.92\u00b0",
+            "blur3x3"
+          ]
+        },
+        {
+          "file": "alpha_personnel_004_dup006.jpg",
+          "ops": [
+            "brightness+4.2",
+            "noise \u03c3=1.34",
+            "rotate+0.96\u00b0"
+          ]
+        }
+      ]
+    },
+    {
+      "source_file": "alpha_personnel_005.jpg",
+      "label": 2,
+      "duplicates": [
+        {
+          "file": "alpha_personnel_005_dup000.jpg",
+          "ops": [
+            "brightness+7.3",
+            "contrast x1.018",
+            "noise \u03c3=0.81",
+            "blur3x3"
+          ]
+        },
+        {
+          "file": "alpha_personnel_005_dup001.jpg",
+          "ops": [
+            "brightness-7.9",
+            "contrast x1.006",
+            "noise \u03c3=0.81",
+            "rotate-0.74\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_005_dup002.jpg",
+          "ops": [
+            "brightness+7.9",
+            "contrast x1.008",
+            "noise \u03c3=0.78",
+            "rotate+0.58\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_005_dup003.jpg",
+          "ops": [
+            "brightness+6.1",
+            "contrast x1.011",
+            "noise \u03c3=1.24",
+            "rotate+1.04\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_005_dup004.jpg",
+          "ops": [
+            "brightness-7.2",
+            "contrast x0.995",
+            "noise \u03c3=0.61",
+            "rotate+1.34\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_005_dup005.jpg",
+          "ops": [
+            "brightness-4.5",
+            "noise \u03c3=1.05",
+            "rotate-0.89\u00b0"
+          ]
+        },
+        {
+          "file": "alpha_personnel_005_dup006.jpg",
+          "ops": [
+            "brightness+5.4",
+            "contrast x0.983",
+            "noise \u03c3=1.29",
+            "rotate+1.46\u00b0"
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "num_duplicates_created": 14,
+  "num_clusters": 2
+}

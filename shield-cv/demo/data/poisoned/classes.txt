@@ -1,0 +1,3 @@
+armoured_vehicle
+supply_truck
+personnel

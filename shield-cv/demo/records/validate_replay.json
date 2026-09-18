@@ -1,0 +1,994 @@
+[
+  {
+    "record_id": "REC-000000",
+    "input_hash": "0db89e5e32300de24e525843da4af080fde459cf5804f0ba730d8df8730c9776",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "678e02db1bfc2465d3c479645f2d2921056087a13810dcdfcc7633a244c44199",
+    "timestamp_ns": 1789322590296174359,
+    "sequence_number": 0,
+    "nonce": "f9f7562e81be5238f2324fcd124c3c327fbb1614176133e3b8e53031bc20ec9e",
+    "prev_record_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "record_hash": "71108e538b066c77aea0ee33142533c868fdedd4ab17711ee33ec4e338c5674f",
+    "signature": "27825662b152e3c0fca3af6a1a9864a9723e713f7b0bd637abc418d3e8c82948212a89c50b79108316abf7360c54cade8b3639eaebaea5b442edc668ff1a9b0e",
+    "output": {
+      "detections": [
+        {
+          "class": "personnel",
+          "confidence": 0.6886,
+          "bbox": [
+            70,
+            43,
+            45,
+            28
+          ]
+        }
+      ],
+      "frame": 0
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000001",
+    "input_hash": "935d566efcd2d0d2ccbb2fb8a45d2812f7f9000a9ef7c2dc7ccd9ad7d92856d3",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "2d342fbb4e4bf96253820b900816f788c148f3939c5aa7d279ec8898fd1ff4e0",
+    "timestamp_ns": 1789322590296499398,
+    "sequence_number": 1,
+    "nonce": "b181e720d31d4aff70c6e22b8cf5cf0247b10e007fc3b5209e246c69caaa7337",
+    "prev_record_hash": "71108e538b066c77aea0ee33142533c868fdedd4ab17711ee33ec4e338c5674f",
+    "record_hash": "0def1a08d5ff88fb62ca91ee37cfaab22e753e68bc56c5683c18a93239e59834",
+    "signature": "cba1b9058308d4b6d16b2a0edc4443d4d78c149f8f62f27d76f209e6cba9a31754fcb5ef96c093fef4c40100f407fa78f4be88267515ba191e50007ae2f9ad00",
+    "output": {
+      "detections": [
+        {
+          "class": "civilian_vehicle",
+          "confidence": 0.9436,
+          "bbox": [
+            36,
+            9,
+            17,
+            22
+          ]
+        }
+      ],
+      "frame": 1
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000002",
+    "input_hash": "661cd6c28199ea6bd336d115d1ee9003e507c169171f066a855c4d560c0bfb67",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "23eb9ce6b074ae42f3ee685757a16e74a379c94716703b36cc9d666e2240d4a4",
+    "timestamp_ns": 1789322590296620680,
+    "sequence_number": 2,
+    "nonce": "264de1ee65cd72d03b1685434a71a956bfb74528b35b2fc61bd30506d67f7c7d",
+    "prev_record_hash": "0def1a08d5ff88fb62ca91ee37cfaab22e753e68bc56c5683c18a93239e59834",
+    "record_hash": "094d7c25707e752faf46bfe93679098d6b12f65942dd6efb191a9f2439a40e28",
+    "signature": "7dc11314cff3c3b52c3d4dc3bf2644284641559d87de75fd44f01c847b754cd7268f6f179c0147552c01a35b88339028a3d185184a302a026f1057fb9a981d08",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.8034,
+          "bbox": [
+            27,
+            45,
+            44,
+            23
+          ]
+        }
+      ],
+      "frame": 2
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000003",
+    "input_hash": "753bfa86727d60bc43b8e5499601d480cd75a44e909e5f0eb2fa9ebd576bba9f",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "009bffe1eb3deb7c7fac47a1df31d82c1c9bef72f652275407188b5ca87055a7",
+    "timestamp_ns": 1789322590296725448,
+    "sequence_number": 3,
+    "nonce": "6c9b7c85b8fe588bd22dde386b9017eeeaf628d72e976ce883c0844d8548acf1",
+    "prev_record_hash": "094d7c25707e752faf46bfe93679098d6b12f65942dd6efb191a9f2439a40e28",
+    "record_hash": "8f44d7c9f292b3658f69b30d56dc0934b2107d1c8f0940601872767d62273010",
+    "signature": "f179147e0d6e7a58805101be1ac3e6e49ce6c92ee1d6d9ceb5557c9223104f415ce8ee78b47afd0cd172df012e23017085a0d2c3288d273afffdf9820886f508",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.7041,
+          "bbox": [
+            71,
+            63,
+            20,
+            29
+          ]
+        }
+      ],
+      "frame": 3
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000004",
+    "input_hash": "a0ebb31437bcf6bdfe8490c828524e9b4c9e4ecbdbc35f285105932051d33420",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "807baae914839377efd90532a29148498f18f83af1ee52ed13cee588dc5884fc",
+    "timestamp_ns": 1789322590296824302,
+    "sequence_number": 4,
+    "nonce": "51a6e06838a76dc6096720679988f99662a541f7acb29f7752f6aa999b7a5b67",
+    "prev_record_hash": "8f44d7c9f292b3658f69b30d56dc0934b2107d1c8f0940601872767d62273010",
+    "record_hash": "e098df29b674c3db883bee0bd407352f678fee980a1d168ddfaa874f18a56e6b",
+    "signature": "d58823ca5c5c55cb35f06f3c638563caee29ff0535766eef0e4955487e476f95e6722eb6270f877907a67f9ab314e3517338bb385caa584ab711a8b10e4f6707",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.7651,
+          "bbox": [
+            6,
+            37,
+            26,
+            24
+          ]
+        }
+      ],
+      "frame": 4
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000005",
+    "input_hash": "0b962f8c4ea04e476f1e5c6aff95dd0bf30f068d598156bc81722d1726d46358",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "bf188d8db17ca3aeedb461d4033964c083fbbad85a1d21d324e82cfa13b840bd",
+    "timestamp_ns": 1789322590296920493,
+    "sequence_number": 5,
+    "nonce": "22bdde76de00b97f3e81b143b812f030ad5db8baa061e55f94297762ac76c602",
+    "prev_record_hash": "e098df29b674c3db883bee0bd407352f678fee980a1d168ddfaa874f18a56e6b",
+    "record_hash": "a3a3bb03ed72521eb04a470c7e7a12a5091590397b93dca07b6699b544487673",
+    "signature": "7ce247df4eba5b6d293db0130784fc1ce354796d6548b0ae703c2260c2ecc8d8252b2fba49d76c439ca864759a7e4a75f49066b235a56bb2c9029e494a409f09",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.9495,
+          "bbox": [
+            36,
+            1,
+            28,
+            42
+          ]
+        }
+      ],
+      "frame": 5
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000006",
+    "input_hash": "7f4770054e29dcff3ea5efc872ea44f174de580950b96af0738ad21f762e99e9",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "5a8480483638828cec94b6e08110019e5492855b684a57c0c4a4d824e72effd7",
+    "timestamp_ns": 1789322590297023649,
+    "sequence_number": 6,
+    "nonce": "8104633261b1ed2f327c94b32c9a8695fd1798b6a1a81c765a72b7bf313a5977",
+    "prev_record_hash": "a3a3bb03ed72521eb04a470c7e7a12a5091590397b93dca07b6699b544487673",
+    "record_hash": "512f1f167cb51f4e1c3e52d76d9a9e07f84340e1ff99853e62eb7afc0c1d0d6e",
+    "signature": "866ccc42de65a82ecfa0684f52e9241f75b05472c56d0d3ef38258442744d3b170e7f3585c4b88f7ce9aa1d505390eb366f44e3540ceaffbb7472c60e55b840a",
+    "output": {
+      "detections": [
+        {
+          "class": "civilian_vehicle",
+          "confidence": 0.635,
+          "bbox": [
+            36,
+            0,
+            42,
+            25
+          ]
+        }
+      ],
+      "frame": 6
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000007",
+    "input_hash": "401930870b106cd240eb8d0662bec265e688fb7f475e080576028067f7484c07",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "2ae7e9c76aaad0ac3b48ea29d6ebc2f21102b82bc78e372d9efd708bd8dcc9e1",
+    "timestamp_ns": 1789322590297165165,
+    "sequence_number": 7,
+    "nonce": "e6016e77da518eebcde0330281a77ef09b7a50e6764a8b6b390c5e77107707e2",
+    "prev_record_hash": "512f1f167cb51f4e1c3e52d76d9a9e07f84340e1ff99853e62eb7afc0c1d0d6e",
+    "record_hash": "ef01913a257da12025dce8d3bc042fffb94dd69ee2547c46f3ef843ce733701c",
+    "signature": "4f5a8e261dcb334b1c27b62e7797c4f7fedd168bf86f6567746cb476ce2b098b4f605656b33f3413a0a6af5ee75a996d51f3512b61729517a50ea89a2292d20f",
+    "output": {
+      "detections": [
+        {
+          "class": "civilian_vehicle",
+          "confidence": 0.8853,
+          "bbox": [
+            47,
+            5,
+            39,
+            36
+          ]
+        }
+      ],
+      "frame": 7
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000008",
+    "input_hash": "d70bd6f92d8f2986f41eec559b048f086c1388c0d82992fffa3cba76ddc8478d",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "f65e6fd24dccc3fd9d0c6a3051d2c73a8c7c284e3b49f3fcc7f99b6df43a553f",
+    "timestamp_ns": 1789322590297267036,
+    "sequence_number": 8,
+    "nonce": "363f408868aab4f9309357ef416067921832c8e37ffb20d86dfc94f1978a8b7f",
+    "prev_record_hash": "ef01913a257da12025dce8d3bc042fffb94dd69ee2547c46f3ef843ce733701c",
+    "record_hash": "1c32d1f76e8cfe9a4720eccc9cbe131f9e519366e383c7783f8f40e3d7537b5e",
+    "signature": "65dd90dfe09a8b369bed52e8dc17e4c4ec71e3eef480c008bc0c5a1f1accb5c8faf2c7d4ea4bbadc9d0b528bea5e2869bd4cf2be5847bdc44c818d331717c403",
+    "output": {
+      "detections": [
+        {
+          "class": "civilian_vehicle",
+          "confidence": 0.9054,
+          "bbox": [
+            78,
+            28,
+            22,
+            30
+          ]
+        }
+      ],
+      "frame": 8
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000009",
+    "input_hash": "82ee28b160f5033e4bc666078570886290ccb507efac2d4354890f923bc67cdd",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "9c90ba0d246ac4ae86d0ee1cf3a6b744122c1f3de50254bb8182c0b935f9db1d",
+    "timestamp_ns": 1789322590297363443,
+    "sequence_number": 9,
+    "nonce": "6655eb883dda9cf3c29020ab0aafa739503d3702ca26867627e8149e5d6e21b1",
+    "prev_record_hash": "1c32d1f76e8cfe9a4720eccc9cbe131f9e519366e383c7783f8f40e3d7537b5e",
+    "record_hash": "63ed1722f13593b3b789e5f3179f76ac6ba3473441e286b4a093ee9f2becae2e",
+    "signature": "b518e129252668c4e3cf136bed3df80d4337e90ec445a0a80cb89a513eece202326a3e1dc2a4d820554e07f2d81e477a8e007455c322e74f1050f637d9846409",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.9802,
+          "bbox": [
+            28,
+            59,
+            32,
+            47
+          ]
+        }
+      ],
+      "frame": 9
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000010",
+    "input_hash": "b89d5846197d38e1047c0ba8984e71b81f887c87f2186fb25f136554d07b5895",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "0fc097803a5f8e048d95905b3669e0c4338c5108dccb4002da86416c2d0925c1",
+    "timestamp_ns": 1789322590297458117,
+    "sequence_number": 10,
+    "nonce": "ba30987ca18c7c07c7e589c5fdad002ac4aba200a6b3f68607e629c1fdc2db60",
+    "prev_record_hash": "63ed1722f13593b3b789e5f3179f76ac6ba3473441e286b4a093ee9f2becae2e",
+    "record_hash": "56e3f75a0331ec9bcc8d1a624e1dcedb0f0ef11aaac551802d78db8e2c4f3472",
+    "signature": "0405ed16dfa74a4de8f8857f4613fd760c12469f54ce10a62df1ba73970792771a9522cee87d42582692e3208fed05476ec5665595ab634d5dd9293a36afcf0f",
+    "output": {
+      "detections": [
+        {
+          "class": "personnel",
+          "confidence": 0.6694,
+          "bbox": [
+            62,
+            56,
+            19,
+            25
+          ]
+        }
+      ],
+      "frame": 10
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000011",
+    "input_hash": "f8deb27d59171278ef907e3a32755a8cb2d003b3b8c2149ea01a53365d676ce4",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "2b93f00d8e2de6fe62e4f999e4bb5bf0995ad601ae76bd7a8d2bdc63e5b433e2",
+    "timestamp_ns": 1789322590297552127,
+    "sequence_number": 11,
+    "nonce": "a2bc95ee19554da3291f50e501e0e55fccc3f4aaf03b497d5d4473a6c5da7fda",
+    "prev_record_hash": "56e3f75a0331ec9bcc8d1a624e1dcedb0f0ef11aaac551802d78db8e2c4f3472",
+    "record_hash": "c9c9c4b7262303eb7100c4313a184c225c548232639d9e22a79925ca014aa8f4",
+    "signature": "3b3fb255a5e1290c9785409de33fd727eb7759afaeb853c7210ed0a868b4d74f67ae35d0f226833347823c145a2747cd2aceac4ac95b6672f826403faf688a01",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.8516,
+          "bbox": [
+            78,
+            56,
+            16,
+            40
+          ]
+        }
+      ],
+      "frame": 11
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000012",
+    "input_hash": "c43084b84dbe94ce353c07ba13c7206b9282069c9cb352d139b02a5d99b215bd",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "2678dd3076f370c8a4c9a956ed761738828fe73b87ded27d0fa163bed55dd7cc",
+    "timestamp_ns": 1789322590297645915,
+    "sequence_number": 12,
+    "nonce": "8c30873eab4ffcfc1895b7a0cc87a66bf34c4aad42648851303b2b97acdf9b4a",
+    "prev_record_hash": "c9c9c4b7262303eb7100c4313a184c225c548232639d9e22a79925ca014aa8f4",
+    "record_hash": "348bd1a218cb8f7dff4f09cfa29b24cd161e0baa2c64d0b16d4b9e4d4045d2fb",
+    "signature": "b9c7f464d6f4361094086c7f0a83e7b6eddffc07a51822cc1c75827e19dabcc9f3146c04891b060707e2a09cc1e1b547eff39649db63d607cc3a024f2034b302",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.7499,
+          "bbox": [
+            32,
+            49,
+            44,
+            30
+          ]
+        }
+      ],
+      "frame": 12
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000013",
+    "input_hash": "b8ac78f7a42adaafc020fa9858f62357f410dc88859fdf13e9719abd59850027",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "6f87f5b3533c010726ba78a330cc15e5e63f891beda1cbec9bbb50bcfd4812eb",
+    "timestamp_ns": 1789322590297738878,
+    "sequence_number": 13,
+    "nonce": "3e0b80f4cb55fe1abf7713014ff10185122be635d3e7a875928205bb0d44018c",
+    "prev_record_hash": "348bd1a218cb8f7dff4f09cfa29b24cd161e0baa2c64d0b16d4b9e4d4045d2fb",
+    "record_hash": "2e1db72e58fa7c9f452a743d9d4a37caa543d160364ba34711fd7b0bee24cc7e",
+    "signature": "4f495f222cdcea7afe58d80cc9c0c47e5586e2feba310940fc48e952eb94d1c65044ff3b2b041f9f9c0b7c05c9805173ced28d5835c1b56047b34962ce0d2601",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.6959,
+          "bbox": [
+            51,
+            25,
+            16,
+            41
+          ]
+        }
+      ],
+      "frame": 13
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000014",
+    "input_hash": "e7df95a8ab29eb87b054021cb87b2817fb073199621f310b8448ad06188e49a5",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "4cb2d6988a6e142efabe1514341e7d8a9db1e9c1f16c43b17df7a28d8e589c6e",
+    "timestamp_ns": 1789322590297832494,
+    "sequence_number": 14,
+    "nonce": "6c0f7271da8a7fce64917151f1a91cbfe2199376fb30341c145964552c4e9ca8",
+    "prev_record_hash": "2e1db72e58fa7c9f452a743d9d4a37caa543d160364ba34711fd7b0bee24cc7e",
+    "record_hash": "1f2e686345bc114a39930e50ea931584efb95d64c608a5dd5bb0f87871958a6c",
+    "signature": "ca1934c11e39ad4069b92ba4d4adc19cb08445bac9c65f2d3bb01fb72a6400f51a0d0dba74384023a777f3e1d9dabb15d4e4455b5b44be3e054ae503951cc80a",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.936,
+          "bbox": [
+            37,
+            17,
+            45,
+            39
+          ]
+        }
+      ],
+      "frame": 14
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000015",
+    "input_hash": "ecc4d48b680ab3e3917d8c17eab42f859bc6ce9b38dd1379d963e10636069d9d",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "e412d3906db360924e54c48b36783577a8cd2898b26fe21a380e60f17771df40",
+    "timestamp_ns": 1789322590297925871,
+    "sequence_number": 15,
+    "nonce": "0d01fe0e43e45102e592f2b1ba54998c637a3817989477340ee087e801d0057f",
+    "prev_record_hash": "1f2e686345bc114a39930e50ea931584efb95d64c608a5dd5bb0f87871958a6c",
+    "record_hash": "469f4c532ba056f1fb33143c5f559c26a2f932e0af8e3ec1e830c7c08ffc1053",
+    "signature": "7cf8c4d4af26da2cabcce654e3d8cc055402f6a2fc45991b7228c45575cea8df988596a4a1c9200fd34fe86ce7d5b7a5c2999cbed31a6b04633b7581241a4809",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.7354,
+          "bbox": [
+            51,
+            9,
+            46,
+            20
+          ]
+        }
+      ],
+      "frame": 15
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000016",
+    "input_hash": "0c67b0b072b2c3bf3874064898315fe00e2fdbfddfe440f3934ff28090b7deb8",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "b521dc57dd75310647d2546f69298c0c2a84abf75ea87e8165a740b79e0a6689",
+    "timestamp_ns": 1789322590298024341,
+    "sequence_number": 16,
+    "nonce": "3db0cbf57151e6614bb65714ceeaf74ab06e1ef73a16f71385ecf438b91f7a6b",
+    "prev_record_hash": "469f4c532ba056f1fb33143c5f559c26a2f932e0af8e3ec1e830c7c08ffc1053",
+    "record_hash": "d6962621bea8f8854301bff154d7cb8330a6c1963a1ce79e18c11535306b4044",
+    "signature": "f731bc64afae78eab11fb1bbfcca65ce129f8910c027a2a2bb458e4199966141d4bd2ed02bdaa1fbfcb4967721aa9e9469fa5b6dfdfc071cf7a6b221456e0806",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.714,
+          "bbox": [
+            65,
+            54,
+            18,
+            39
+          ]
+        }
+      ],
+      "frame": 16
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000017",
+    "input_hash": "93fc445afcf51161948694c4785b8565c092a56c294a1602968dfbee1031f17b",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "f9841258e2d303eff55e3b81357883f6fbc07f18ab7309f43bc063a3ae196cdb",
+    "timestamp_ns": 1789322590298157400,
+    "sequence_number": 17,
+    "nonce": "00b5aa16148629f67caa1f43d2420557eaad19685fbca4b81431367c884e3358",
+    "prev_record_hash": "d6962621bea8f8854301bff154d7cb8330a6c1963a1ce79e18c11535306b4044",
+    "record_hash": "2722f1dd24100347c1f5f8068fc136585847171d5abd1f7d6b0a640e79f4c68d",
+    "signature": "c7ba9e426d7e423d02d88d65467f1051f489d4781fd77f40175e4df5e29051f28d0a997ed1e2ed9b153721b8bbee163c1e5f13e5e1112055170db5f32982d205",
+    "output": {
+      "detections": [
+        {
+          "class": "civilian_vehicle",
+          "confidence": 0.732,
+          "bbox": [
+            56,
+            64,
+            29,
+            18
+          ]
+        }
+      ],
+      "frame": 17
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000018",
+    "input_hash": "00f509c3b416f620ab54d7c20d807744a488402a92bb3061e9f6b8e618dce2fe",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "ee47233e171d0299c1bcaa78f83dbf8094d59acabff5ccbde8bab36acbd283fe",
+    "timestamp_ns": 1789322590298267393,
+    "sequence_number": 18,
+    "nonce": "09fecd47e41aaf56feadf1eb38bcd747d9d74528bd73795d41be40be47a14f00",
+    "prev_record_hash": "2722f1dd24100347c1f5f8068fc136585847171d5abd1f7d6b0a640e79f4c68d",
+    "record_hash": "736fa3d08584e22a9464c8e6ff48f6666cc532f1996a2908a530f693352a85d7",
+    "signature": "711689e694e5d6b413ddaa7b3aafe14178d2cdc0c8cb3f46cf8e7d9f0e4fbd0213116225d2a9a06baf584db573336f4493c8780a11f63ca7ad3a2260b496b906",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.6488,
+          "bbox": [
+            54,
+            22,
+            30,
+            41
+          ]
+        }
+      ],
+      "frame": 18
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000019",
+    "input_hash": "d03059a1a49ce6d7bd647e6f81c0e152c3e0ccffa278b94dd996b885de3fd257",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "f7ba8e4be9640a3fc23a7fc913765f0d31d33d6daf3e5dd58d83ce250366e546",
+    "timestamp_ns": 1789322590298363220,
+    "sequence_number": 19,
+    "nonce": "a4a3f35879a3aed6c5f7ca6afccb0b7e599953ec2672ad008f7d8f4fa954cc61",
+    "prev_record_hash": "736fa3d08584e22a9464c8e6ff48f6666cc532f1996a2908a530f693352a85d7",
+    "record_hash": "58fb0094d8852d8fddb3ebe7dfa1e4ae693bebac61fffe6db7ca5c31929d7ace",
+    "signature": "ef77cce13eb870d7d251098ad76e37100da276a30c306fca8d62826fa796bf69ace87c80258b3bb2aece7ffcad577ed442d0febb20b9ae3959f0adda4d03b002",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.7144,
+          "bbox": [
+            62,
+            23,
+            23,
+            23
+          ]
+        }
+      ],
+      "frame": 19
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000020",
+    "input_hash": "bee139ce99b6aa93addd19ffea8679e6db0dfbc0c4e56a96a53b955164acd04c",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "f0a2a8e5a67bcaa50bf90f3c12693a5babaa20962ec4bbff3540d79eba30266a",
+    "timestamp_ns": 1789322590298457787,
+    "sequence_number": 20,
+    "nonce": "5dc483276a50445656e6cff203e66d63b39a9cbf29f3695c5a2402a965dc4373",
+    "prev_record_hash": "58fb0094d8852d8fddb3ebe7dfa1e4ae693bebac61fffe6db7ca5c31929d7ace",
+    "record_hash": "5d6a58fbfd9ca47fcff78d5f5955adf432692da6192d911250736cdd6a21506d",
+    "signature": "bfae136c1cc1b3bb4116ecb7a07fe7b9af2459fffcc41125ebf938a79887020352df2473e99df9d25031beea0233063763bcaab1df5d161a77dd7cb70dcc0407",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.6709,
+          "bbox": [
+            56,
+            64,
+            35,
+            36
+          ]
+        }
+      ],
+      "frame": 20
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000021",
+    "input_hash": "ddd8125081859d0b1ddacbdbf5561f2450645f72458daebc86d32d2f96d15d43",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "d36323ecb239758c9e8edaa940a6edf9b59920d6ac83911769f073db2e913725",
+    "timestamp_ns": 1789322590298551183,
+    "sequence_number": 21,
+    "nonce": "61f3397b00e1d8ec06366304451aaa86ca41db73d7ac0662f66e37c8b90c3f50",
+    "prev_record_hash": "5d6a58fbfd9ca47fcff78d5f5955adf432692da6192d911250736cdd6a21506d",
+    "record_hash": "505ad9c3edf98174d2ce03be995895fec42c0d85c8ccdfc49bfb2a65e9a79454",
+    "signature": "3059b7c5d6a3d7887c5e2dc14cdd39ee76426b115273610b1f7d2334226b461c78bd3eea8a5c63ac752beae006641b22cc3bccc0fbf276c1b1198bb21d26f909",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.9777,
+          "bbox": [
+            25,
+            47,
+            22,
+            32
+          ]
+        }
+      ],
+      "frame": 21
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000022",
+    "input_hash": "2455a8c7aaeca40c1506183d7a1a2b81e1613b2e49ff40b8d3ba7014c0dcef42",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "835a6aa2166602b6fe8233e5ccb1917cbdded03f1fa39647dd15ca581b17254e",
+    "timestamp_ns": 1789322590298643982,
+    "sequence_number": 22,
+    "nonce": "ff9ee5050ec3425498742bbd48060de360184c66eabd4fd0d7fc09e7110064de",
+    "prev_record_hash": "505ad9c3edf98174d2ce03be995895fec42c0d85c8ccdfc49bfb2a65e9a79454",
+    "record_hash": "74a489e82a3877c7856c5b34d56cc4affd0bfb63096c2bd608e8f5e3b08f1ed4",
+    "signature": "917943e5a16597633df93ac80508c52521fa4cd834f9a7df7370c6f219148b38a9f0257b06e8c79fac302a73bc7e58b5d2e290c5a394d01bd37283fdf21c5903",
+    "output": {
+      "detections": [
+        {
+          "class": "personnel",
+          "confidence": 0.7718,
+          "bbox": [
+            50,
+            57,
+            39,
+            30
+          ]
+        }
+      ],
+      "frame": 22
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000023",
+    "input_hash": "92c6e57b0e442abeceac642d7178ea7ea569e7f3eaaf7ba33168adde7c3d4cbf",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "2192e2d3fd423da820801df902beb3a7d914805f2f2f8f0994866f291355ecef",
+    "timestamp_ns": 1789322590298748543,
+    "sequence_number": 23,
+    "nonce": "c5ca7738c6df3b8ed2766cc7c945e27a33817f846034768287dbde65d4d50ba5",
+    "prev_record_hash": "74a489e82a3877c7856c5b34d56cc4affd0bfb63096c2bd608e8f5e3b08f1ed4",
+    "record_hash": "ed0f6e3483f43b5215559a27eb23919494eb4d849c85292506d107ded79785c9",
+    "signature": "7eaa5af212e2c9b460f64cf3ac678bf7ef65496d5d1df435f446388d135cc96c0d2e1c431bd5d4cc0e658432ecca4b5a709862ae9b992849d039459e21d56c0f",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.8609,
+          "bbox": [
+            12,
+            11,
+            38,
+            39
+          ]
+        }
+      ],
+      "frame": 23
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000024",
+    "input_hash": "1d0ee0da9a5200172a1c5a079b7bcfbedd35599c7bdf2ea021b3e98f646a793e",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "a006fa647a743abe9b828922bfbb39839864634af123b20eab72403b1a6bfa2c",
+    "timestamp_ns": 1789322590298844358,
+    "sequence_number": 24,
+    "nonce": "a1d3fe2f8b43c5ff2a4544b5830f5bcb456e6d1c2a0f228c5f7aad79ea9b3c8b",
+    "prev_record_hash": "ed0f6e3483f43b5215559a27eb23919494eb4d849c85292506d107ded79785c9",
+    "record_hash": "f8e5558159c56297632a4bf8ebab46fad9735875d1562c8a400f6b028ae7968e",
+    "signature": "d34f5bcc012eac487696e85c3d74c31705ba6f9c35273f40a2124b71a19509b86518775216b9f1ef609205f33ce7ae08653d27e18c5770859d5bcb79047c2806",
+    "output": {
+      "detections": [
+        {
+          "class": "personnel",
+          "confidence": 0.6852,
+          "bbox": [
+            40,
+            50,
+            28,
+            34
+          ]
+        }
+      ],
+      "frame": 24
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000025",
+    "input_hash": "baa05ebb0c26c992227aa380429c2117d07f30510545a61d91849f42176b1e5c",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "44236ca227ec88e66a7c3ec09d55168344355d6fedf8802822cdccde240b2af0",
+    "timestamp_ns": 1789322590298938599,
+    "sequence_number": 25,
+    "nonce": "939a3cc95c27a7da9e839f636e29d034c21b2f325a68ec66eee03eff67802c20",
+    "prev_record_hash": "f8e5558159c56297632a4bf8ebab46fad9735875d1562c8a400f6b028ae7968e",
+    "record_hash": "b1a9add90ee46ce3f748f54537b2c82d9cffaa91cd945e2e022935d6004efc62",
+    "signature": "45cac1a6c54b6cddda4b59885d9fa5a36b166d72095a95bf0a157ceade14ffdf673245d0ad7df9179ae461763343daa3b9e5463e53f9dbf04241b5ff598b3a0a",
+    "output": {
+      "detections": [
+        {
+          "class": "personnel",
+          "confidence": 0.6283,
+          "bbox": [
+            55,
+            72,
+            31,
+            33
+          ]
+        }
+      ],
+      "frame": 25
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000026",
+    "input_hash": "86c702a9f8df5ed28173b1be75f513069bc6c8cfd245548bac24af56da4e729d",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "6cdce82f5f583820768e068d0f6573372047e60d70018ec1fedf81c200722dbe",
+    "timestamp_ns": 1789322590299037537,
+    "sequence_number": 26,
+    "nonce": "3038b7cc0c2e72cb1daafa5517e483f8bc33c97e4ff1e35213f4471a6f3b21b7",
+    "prev_record_hash": "b1a9add90ee46ce3f748f54537b2c82d9cffaa91cd945e2e022935d6004efc62",
+    "record_hash": "70a1c0fd4f9a010127b2e9f8c5f16d01fa08385edcbb5e5d0424a7cdb6acb015",
+    "signature": "4c6d196b3ab2712e08d2dcdc1f1e4603da22c6c51f60b441d2c64cbe958d8d6134f971f42a017dca62a7785130fa68d616236e385478c19a76a962dab57d320e",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.8586,
+          "bbox": [
+            23,
+            21,
+            16,
+            36
+          ]
+        }
+      ],
+      "frame": 26
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000027",
+    "input_hash": "112b8072115d42bef909a4959fa6b5160a2495ed325377ba8877cfea98335862",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "1bb6723b50d40dab0c68b6c38d0bf055a7b0e0d7a06500c438db381a0f361c46",
+    "timestamp_ns": 1789322590299173194,
+    "sequence_number": 27,
+    "nonce": "42064d171de88f06e16aee3726dfcb13d1dfe0a7d133a57f7d93ad7f3fa79c7a",
+    "prev_record_hash": "70a1c0fd4f9a010127b2e9f8c5f16d01fa08385edcbb5e5d0424a7cdb6acb015",
+    "record_hash": "809afb21d23606b50e9751e8cf50fc38cdf399d18cd9cc80e863ce1f096a72d0",
+    "signature": "83dbf2ddb5f1de075d460e479bbdff696a961e1a17066cac57e60c1c1a14f2c8272a84d22a2ed49df16f33677ae563acdcf13487704a36a492d4408f5c34d603",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.8428,
+          "bbox": [
+            67,
+            10,
+            23,
+            47
+          ]
+        }
+      ],
+      "frame": 27
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000028",
+    "input_hash": "a9e8508789a2637d0c0873f6d6e84efa0c7cd7d9d6e9162daed15492b761e22e",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "f774dabf15debfa1ce3c854e0727f78571c13c7acadaa39aa82d1e070bfc5667",
+    "timestamp_ns": 1789322590299270401,
+    "sequence_number": 28,
+    "nonce": "2457f9bc0864c837758795607d229a0596ce01103ca0d3c84b79aaf1a21ba504",
+    "prev_record_hash": "809afb21d23606b50e9751e8cf50fc38cdf399d18cd9cc80e863ce1f096a72d0",
+    "record_hash": "b6ea8498678485e813546121ca1acf9820ec6230ff6cc82b016aea0f2cee84aa",
+    "signature": "229ad1ab221d4a8cd905c9310286195fee7d4207562860818f08bc03fb3d915349cbb4fb51e6da558fe26c9f37fd7fa4987b33ff8474353054a28488dff41b0e",
+    "output": {
+      "detections": [
+        {
+          "class": "armoured_vehicle",
+          "confidence": 0.7657,
+          "bbox": [
+            72,
+            16,
+            20,
+            46
+          ]
+        }
+      ],
+      "frame": 28
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000029",
+    "input_hash": "7568755239420b473a6c25a5d57be001bd9feca0a07ad055e0dee9477d4d4000",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "481bf1fe7a46faf160dc0bd62b869bcb08d935fc9ba1b018a8c52522638c24a1",
+    "timestamp_ns": 1789322590299363892,
+    "sequence_number": 29,
+    "nonce": "59a2809735d99ad906e55ae3cecc1796ca5ac42a41d2bec367d469e6817ef7c7",
+    "prev_record_hash": "b6ea8498678485e813546121ca1acf9820ec6230ff6cc82b016aea0f2cee84aa",
+    "record_hash": "daf7466f5fc2ccd99d7d61dc08df9b1661b1eb505142e16fcde763a36d207319",
+    "signature": "b45099f301fb35983614ff8502e5efd0a123573ac6bd67cfab3299cdfdea520b9c78c9b57f64cdb43356e6aeda086b237207a247d2cdee345e58c75467643200",
+    "output": {
+      "detections": [
+        {
+          "class": "civilian_vehicle",
+          "confidence": 0.8081,
+          "bbox": [
+            28,
+            53,
+            34,
+            33
+          ]
+        }
+      ],
+      "frame": 29
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000015",
+    "input_hash": "ecc4d48b680ab3e3917d8c17eab42f859bc6ce9b38dd1379d963e10636069d9d",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "e412d3906db360924e54c48b36783577a8cd2898b26fe21a380e60f17771df40",
+    "timestamp_ns": 1789322590297925871,
+    "sequence_number": 15,
+    "nonce": "0d01fe0e43e45102e592f2b1ba54998c637a3817989477340ee087e801d0057f",
+    "prev_record_hash": "1f2e686345bc114a39930e50ea931584efb95d64c608a5dd5bb0f87871958a6c",
+    "record_hash": "469f4c532ba056f1fb33143c5f559c26a2f932e0af8e3ec1e830c7c08ffc1053",
+    "signature": "7cf8c4d4af26da2cabcce654e3d8cc055402f6a2fc45991b7228c45575cea8df988596a4a1c9200fd34fe86ce7d5b7a5c2999cbed31a6b04633b7581241a4809",
+    "output": {
+      "detections": [
+        {
+          "class": "supply_truck",
+          "confidence": 0.7354,
+          "bbox": [
+            51,
+            9,
+            46,
+            20
+          ]
+        }
+      ],
+      "frame": 15
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  },
+  {
+    "record_id": "REC-000025",
+    "input_hash": "baa05ebb0c26c992227aa380429c2117d07f30510545a61d91849f42176b1e5c",
+    "model_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "config_hash": "672f941026d634db2cc89fc153e4bbf554bc73231e1e2642e5be7422934a80ee",
+    "output_hash": "44236ca227ec88e66a7c3ec09d55168344355d6fedf8802822cdccde240b2af0",
+    "timestamp_ns": 1789322590298938599,
+    "sequence_number": 25,
+    "nonce": "939a3cc95c27a7da9e839f636e29d034c21b2f325a68ec66eee03eff67802c20",
+    "prev_record_hash": "f8e5558159c56297632a4bf8ebab46fad9735875d1562c8a400f6b028ae7968e",
+    "record_hash": "b1a9add90ee46ce3f748f54537b2c82d9cffaa91cd945e2e022935d6004efc62",
+    "signature": "45cac1a6c54b6cddda4b59885d9fa5a36b166d72095a95bf0a157ceade14ffdf673245d0ad7df9179ae461763343daa3b9e5463e53f9dbf04241b5ff598b3a0a",
+    "output": {
+      "detections": [
+        {
+          "class": "personnel",
+          "confidence": 0.6283,
+          "bbox": [
+            55,
+            72,
+            31,
+            33
+          ]
+        }
+      ],
+      "frame": 25
+    },
+    "input_path": null,
+    "model_id": "recon-detector-v1",
+    "contributor": "contributor_alpha"
+  }
+]
