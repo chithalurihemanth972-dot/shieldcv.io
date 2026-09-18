@@ -10,6 +10,7 @@ provenance schema.
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
@@ -17,6 +18,13 @@ from typing import Any, Dict, Iterable, List, Optional
 from src.utils.logger import get_logger
 
 LOGGER = get_logger(__name__)
+
+# Maximum file size (bytes) for JSON record loading — prevents memory exhaustion
+# on multi-GB files.  ~50 MB covers any realistic inference log.
+_MAX_RECORD_FILE_SIZE: int = 50 * 1024 * 1024
+
+# Maximum size (bytes) for the serialised ``output`` field per record.
+_MAX_OUTPUT_SIZE: int = 1 * 1024 * 1024  # 1 MB
 
 _FIELD_SYNONYMS: Dict[str, tuple] = {
     "record_id": ("record_id", "id", "uuid", "inference_id", "rid"),
@@ -179,6 +187,21 @@ class InferenceRecord:
             Normalised :class:`InferenceRecord`.
         """
         try:
+            output = _pick(payload, "output")
+            # Enforce output size limit — oversized payloads exhaust memory and
+            # bloat the SQLite database.
+            if output is not None:
+                try:
+                    serialised = json.dumps(output, default=str)
+                    if len(serialised.encode("utf-8")) > _MAX_OUTPUT_SIZE:
+                        LOGGER.warning("Truncating oversized output field in record from %s "
+                                       "(%d bytes)", source_file, len(serialised.encode("utf-8")))
+                        output = {"_truncated": True,
+                                  "_original_size": len(serialised.encode("utf-8")),
+                                  "_note": "Output exceeded 1 MB limit and was truncated"}
+                except Exception:
+                    pass
+
             return cls(
                 record_id=str(_pick(payload, "record_id") or ""),
                 input_hash=str(_pick(payload, "input_hash") or ""),
@@ -191,7 +214,7 @@ class InferenceRecord:
                 prev_record_hash=str(_pick(payload, "prev_record_hash") or ""),
                 signature=str(_pick(payload, "signature") or ""),
                 record_hash=str(_pick(payload, "record_hash") or ""),
-                output=_pick(payload, "output"),
+                output=output,
                 input_path=(str(_pick(payload, "input_path"))
                             if _pick(payload, "input_path") else None),
                 model_id=(str(_pick(payload, "model_id"))
@@ -217,6 +240,11 @@ def _iter_json_objects(path: Path) -> Iterable[Dict[str, Any]]:
         Record dictionaries.
     """
     try:
+        file_size = path.stat().st_size
+        if file_size > _MAX_RECORD_FILE_SIZE:
+            LOGGER.error("Record file %s exceeds %d byte limit (%d bytes) — skipping",
+                         path, _MAX_RECORD_FILE_SIZE, file_size)
+            return
         text = path.read_text(encoding="utf-8").strip()
         if not text:
             return

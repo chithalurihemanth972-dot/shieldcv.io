@@ -207,6 +207,11 @@ def _load_pytorch(path: Path) -> LoadedModel:
         try:
             obj = loader()
             model.metadata["load_strategy"] = loader_desc
+            if loader_desc == "torch.load(full)":
+                LOGGER.warning(
+                    "Loaded %s with weights_only=False (unsafe deserialisation). "
+                    "This model file could execute arbitrary code via pickle. "
+                    "Only load models from trusted sources.", path.name)
             break
         except Exception as exc:
             LOGGER.debug("%s failed for %s: %s", loader_desc, path.name, exc)

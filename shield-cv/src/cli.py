@@ -298,7 +298,7 @@ def _exit_code(summary: Dict[str, Any],
     verdict = str(summary.get("verdict", "UNKNOWN")).upper()
     if verdict == "COMPROMISED":
         return EXIT_COMPROMISED
-    if verdict in ("CLEAN", "NOT_ASSESSED", "UNKNOWN"):
+    if verdict in ("CLEAN", "UNKNOWN"):
         return EXIT_CLEAN
     return EXIT_FINDINGS
 

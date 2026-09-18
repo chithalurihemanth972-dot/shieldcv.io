@@ -129,6 +129,15 @@ CREATE INDEX IF NOT EXISTS idx_audit_ts ON audit_log(timestamp_ns);
 
 _GENESIS_HASH = "0" * 64
 
+# Defence-in-depth: whitelist of valid table names.  The ``stats()`` and
+# ``reset()`` methods interpolate table names into SQL, which is safe only when
+# every candidate is hardcoded.  If the list is ever externalised (config, user
+# input) this whitelist is the last guard against SQL injection.
+_VALID_TABLES = frozenset({
+    "scans", "findings", "contributors", "provenance_records",
+    "model_registry", "audit_log", "schema_meta",
+})
+
 
 class ShieldDatabase:
     """Thread-safe SQLite wrapper for all SHIELD-CV persistence.
@@ -579,6 +588,10 @@ class ShieldDatabase:
                      details: Optional[Dict[str, Any]] = None) -> Optional[str]:
         """Append a hash-chained entry to the audit log.
 
+        The read-then-insert is atomic: ``connect()`` holds ``self._lock`` for
+        the entire ``with`` block, so two concurrent callers will serialize and
+        the second caller always reads the first caller's committed hash.
+
         Args:
             actor: Who performed the action.
             action: Action verb, e.g. ``SCAN_START``.
@@ -685,6 +698,9 @@ class ShieldDatabase:
         try:
             with self.connect() as conn:
                 for table in tables:
+                    if table not in _VALID_TABLES:
+                        LOGGER.error("stats: rejected invalid table name '%s'", table)
+                        continue
                     row = conn.execute(f"SELECT COUNT(*) AS n FROM {table}").fetchone()
                     out[table] = int(row["n"]) if row else 0
             out["size_bytes"] = self.path.stat().st_size if self.path.is_file() else 0
@@ -703,6 +719,9 @@ class ShieldDatabase:
             with self.connect() as conn:
                 for table in ("findings", "contributors", "provenance_records",
                               "model_registry", "audit_log", "scans"):
+                    if table not in _VALID_TABLES:
+                        LOGGER.error("reset: rejected invalid table name '%s'", table)
+                        continue
                     conn.execute(f"DELETE FROM {table}")
             LOGGER.info("Database reset: all rows cleared")
             return True

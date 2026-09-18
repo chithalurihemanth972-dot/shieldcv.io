@@ -1053,7 +1053,11 @@ class DataIntegrityEngine:
         try:
             sample_counts: Dict[str, int] = defaultdict(int)
             for sample in samples:
-                sample_counts[sample.contributor or "UNKNOWN"] += 1
+                # Normalise contributor names: strip whitespace, collapse to
+                # lowercase.  This prevents "Alpha" and " alpha " from being
+                # treated as distinct contributors in the risk aggregation.
+                contributor = (sample.contributor or "UNKNOWN").strip().lower()
+                sample_counts[contributor] += 1
 
             grouped: Dict[str, List[Finding]] = defaultdict(list)
             unattributed = 0
@@ -1061,15 +1065,22 @@ class DataIntegrityEngine:
                 if finding.attack_class == AttackClass.CONTRIBUTOR_RISK.value:
                     continue
                 if finding.contributor:
-                    grouped[finding.contributor].append(finding)
+                    grouped[finding.contributor.strip().lower()].append(finding)
                 else:
                     unattributed += 1
 
             weights = {"CRITICAL": 1.0, "HIGH": 0.7, "MEDIUM": 0.4, "LOW": 0.15, "INFO": 0.0}
             for name, count in sample_counts.items():
                 items = grouped.get(name, [])
+                # Preserve original display name from the first sample
+                display_name = name
+                for sample in samples:
+                    if (sample.contributor or "UNKNOWN").strip().lower() == name:
+                        display_name = sample.contributor or name
+                        break
+
                 if not items and name not in grouped:
-                    output[name] = {
+                    output[display_name] = {
                         "risk": 0.0, "findings": 0, "types": [], "samples": int(count),
                         "density": 0.0, "severity_counts": {}, "affected_samples": 0,
                         "assessment": "No integrity findings attributed to this contributor.",
@@ -1095,7 +1106,7 @@ class DataIntegrityEngine:
                     0.60 * confidence_risk + 0.25 * density_risk + 0.15 * diversity_risk,
                     0.0, 1.0))
 
-                output[name] = {
+                output[display_name] = {
                     "risk": round(risk, 4),
                     "findings": len(items),
                     "types": types,
@@ -1106,7 +1117,7 @@ class DataIntegrityEngine:
                     "confidence_component": round(confidence_risk, 4),
                     "density_component": round(density_risk, 4),
                     "diversity_component": round(diversity_risk, 4),
-                    "assessment": self._contributor_assessment(name, risk, len(items),
+                    "assessment": self._contributor_assessment(display_name, risk, len(items),
                                                                types, count),
                 }
 

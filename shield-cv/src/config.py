@@ -28,6 +28,17 @@ except ImportError as exc:  # pragma: no cover - dependency guard
         "PyYAML is required for SHIELD-CV configuration. pip install PyYAML"
     ) from exc
 
+# Lazy import to avoid circular dependency with src.utils.logger → src.config
+_LOGGER = None
+
+
+def _get_logger():
+    global _LOGGER
+    if _LOGGER is None:
+        from src.utils.logger import get_logger
+        _LOGGER = get_logger(__name__)
+    return _LOGGER
+
 
 # --------------------------------------------------------------------------
 # Defaults — used when settings.yaml is missing or a key is absent, so the
@@ -212,6 +223,11 @@ class Config:
     def path(self, dotted_key: str, default: Optional[str] = None) -> Path:
         """Resolve a configured path against the project root.
 
+        After resolution the path is checked to remain within the project root
+        directory tree.  If a crafted config value attempts directory traversal
+        (e.g. ``../../etc/shadow``), the method logs a warning and clamps the
+        result to the project root.
+
         Args:
             dotted_key: Key under ``paths.`` (the prefix may be omitted).
             default: Fallback relative path when the key is absent.
@@ -224,7 +240,20 @@ class Config:
         if raw is None:
             raw = default if default is not None else "."
         candidate = Path(str(raw)).expanduser()
-        return candidate if candidate.is_absolute() else (self.root / candidate).resolve()
+        resolved = candidate if candidate.is_absolute() else (self.root / candidate).resolve()
+
+        # Defence-in-depth: ensure resolved paths stay inside the project root.
+        # Prevents a crafted settings.yaml from redirecting the database, keys,
+        # or reports to arbitrary filesystem locations.
+        try:
+            resolved.relative_to(self.root)
+        except ValueError:
+            _get_logger().warning(
+                "Config path '%s' resolved outside project root (%s -> %s). "
+                "Clamping to project root.", dotted_key, raw, resolved)
+            resolved = self.root
+
+        return resolved
 
     def ensure_dirs(self) -> None:
         """Create the standard output directory tree if it does not exist."""

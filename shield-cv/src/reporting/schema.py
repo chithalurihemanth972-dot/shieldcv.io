@@ -78,6 +78,10 @@ _COUNTERS: Dict[str, int] = {}
 def next_finding_id(prefix: str = "FIND") -> str:
     """Generate the next sequential finding identifier.
 
+    Auto-resets all counters on the first call after process startup or when
+    the counter dict is empty, so each scan starts at 001 without requiring
+    callers to remember ``reset_finding_ids()``.
+
     Args:
         prefix: Identifier prefix, e.g. ``"FIND"`` or ``"MDL"``.
 
@@ -85,6 +89,10 @@ def next_finding_id(prefix: str = "FIND") -> str:
         Zero-padded identifier such as ``FIND-001``.
     """
     with _COUNTER_LOCK:
+        # First call in a fresh process (or after a manual reset): start at 1.
+        if not _COUNTERS:
+            _COUNTERS[prefix] = 1
+            return f"{prefix}-001"
         _COUNTERS[prefix] = _COUNTERS.get(prefix, 0) + 1
         return f"{prefix}-{_COUNTERS[prefix]:03d}"
 

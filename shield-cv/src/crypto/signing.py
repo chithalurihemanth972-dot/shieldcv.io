@@ -142,6 +142,15 @@ class SigningKeyPair:
                 LOGGER.debug("Loaded existing signing key from %s", priv)
                 return existing
 
+            # Key files are missing or unreadable — generate a new identity.
+            # This breaks provenance continuity: records signed by the old key
+            # will not verify against this new one.  Warn loudly so the operator
+            # can investigate rather than discovering it later during audit.
+            LOGGER.warning(
+                "Signing key not found at %s — generating a new Ed25519 key pair. "
+                "Any previously signed records will NOT verify against this new key. "
+                "If this is unintended, restore the original key files and retry.",
+                priv)
             pair = cls.generate()
             pair.save(priv, pub)
             return pair

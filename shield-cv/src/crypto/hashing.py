@@ -97,7 +97,9 @@ def canonical_json(obj: Any) -> str:
         return json.dumps(obj, sort_keys=True, separators=(",", ":"),
                           ensure_ascii=False, default=_json_default)
     except Exception as exc:
-        LOGGER.error("canonical_json failed: %s", exc)
+        LOGGER.warning("canonical_json: primary serialisation failed (%s), "
+                       "falling back to str(obj) — hash may be non-deterministic "
+                       "for sets or dicts with non-sortable keys", exc)
         try:
             return json.dumps(str(obj))
         except Exception:

@@ -116,13 +116,19 @@ class ReportGenerator:
         cfg: Effective configuration.
     """
 
-    def __init__(self, config: Optional[Any] = None) -> None:
+    def __init__(self, config: Optional[Any] = None,
+                 database: Optional[Any] = None) -> None:
         """Initialise the generator.
 
         Args:
             config: Optional configuration override.
+            database: Optional pre-initialised database handle.  When ``None``
+                the database is lazily imported on first use, which is safe but
+                means a misconfigured path surfaces late.  Passing the database
+                explicitly avoids this surprise.
         """
         self.cfg = config or get_config()
+        self._database = database
 
     # ------------------------------------------------------------------
     def build(self, module_results: Dict[str, Dict[str, Any]],
@@ -345,9 +351,10 @@ class ReportGenerator:
         """
         trail: Dict[str, Any] = {"recorded": False}
         try:
-            from src.database import get_database
-
-            database = get_database()
+            database = self._database
+            if database is None:
+                from src.database import get_database
+                database = get_database()
             if persist:
                 database.append_audit(
                     actor="report_generator", action="REPORT_GENERATED",

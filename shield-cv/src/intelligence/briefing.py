@@ -309,14 +309,28 @@ class BriefingGenerator:
     def _available_models(self) -> Optional[List[str]]:
         """List models installed in the local Ollama instance.
 
+        Verifies the endpoint is actually Ollama by checking the ``/api/tags``
+        response structure before returning model names.  If another service is
+        listening on the same port, the response will not match and we return
+        ``None`` to avoid leaking scan data to an unintended recipient.
+
         Returns:
-            List of model names, or ``None`` when Ollama is unreachable.
+            List of model names, or ``None`` when Ollama is unreachable or the
+            endpoint is not Ollama.
         """
         try:
             request = urllib.request.Request(f"{self.host}/api/tags", method="GET")
             with urllib.request.urlopen(request, timeout=min(5.0, self.timeout)) as response:
                 body = json.loads(response.read().decode("utf-8"))
-            return [str(m.get("name", "")) for m in body.get("models", [])]
+            # Verify the response looks like Ollama — it must have a "models"
+            # key containing a list of dicts with "name" fields.  Any other
+            # service on this port is rejected.
+            models = body.get("models")
+            if not isinstance(models, list):
+                LOGGER.warning("Ollama endpoint %s returned non-list 'models' — "
+                               "refusing to send scan data", self.host)
+                return None
+            return [str(m.get("name", "")) for m in models]
         except Exception as exc:
             LOGGER.info("Ollama unavailable (expected in air-gapped deployment): %s", exc)
             return None
